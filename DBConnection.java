@@ -9,7 +9,7 @@ public class DBConnection {
     private static final String URL =
         "jdbc:mysql://localhost:3306/cmpe343_project2?useSSL=false&allowPublicKeyRetrieval=true";
     private static final String USER = "root";
-    private static final String PASSWORD = "KLJHOUY986104__";
+    private static final String PASSWORD = "12345678";
 
     public static Connection getConnection() {
         try {
@@ -20,3 +20,4 @@ public class DBConnection {
         }
     }
 }
+
