@@ -1,9 +1,9 @@
 package models;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 public class Contact {
-    private int contactId;
+    private int id;
     private String firstName;
     private String middleName;
     private String lastName;
@@ -12,12 +12,14 @@ public class Contact {
     private String phoneSecondary;
     private String email;
     private String linkedinUrl;
-    private Date birthDate;
+    private LocalDate birthDate;
+    private String jobTitle;
 
-    // Constructor ID olmadan (yeni ekleme için)
-    public Contact(String firstName, String middleName, String lastName, String nickname,
-                   String phonePrimary, String phoneSecondary, String email,
-                   String linkedinUrl, Date birthDate) {
+    // for reading from DB
+    public Contact(int id, String firstName, String middleName, String lastName,
+                   String nickname, String phonePrimary, String phoneSecondary,
+                   String email, String linkedinUrl, LocalDate birthDate, String jobTitle) {
+        this.id = id;
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
@@ -27,13 +29,13 @@ public class Contact {
         this.email = email;
         this.linkedinUrl = linkedinUrl;
         this.birthDate = birthDate;
+        this.jobTitle = jobTitle;
     }
 
-    // Constructor ID ile (veritabanından çekmek için)
-    public Contact(int contactId, String firstName, String middleName, String lastName, String nickname,
-                   String phonePrimary, String phoneSecondary, String email,
-                   String linkedinUrl, Date birthDate) {
-        this.contactId = contactId;
+    // for creating new contact
+    public Contact(String firstName, String middleName, String lastName,
+                   String nickname, String phonePrimary, String phoneSecondary,
+                   String email, String linkedinUrl, String jobTitle) {
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
@@ -42,44 +44,51 @@ public class Contact {
         this.phoneSecondary = phoneSecondary;
         this.email = email;
         this.linkedinUrl = linkedinUrl;
-        this.birthDate = birthDate;
+        this.jobTitle = jobTitle;
     }
 
-    // Getter ve Setterlar
-    public int getContactId() { return contactId; }
-    public void setContactId(int contactId) { this.contactId = contactId; }
+    public int getId() {
+        return id;
+    }
 
-    public String getFirstName() { return firstName; }
-    public void setFirstName(String firstName) { this.firstName = firstName; }
+    public String getFirstName() {
+        return firstName;
+    }
 
-    public String getMiddleName() { return middleName; }
-    public void setMiddleName(String middleName) { this.middleName = middleName; }
+    public String getMiddleName() {
+        return middleName;
+    }
 
-    public String getLastName() { return lastName; }
-    public void setLastName(String lastName) { this.lastName = lastName; }
+    public String getLastName() {
+        return lastName;
+    }
 
-    public String getNickname() { return nickname; }
-    public void setNickname(String nickname) { this.nickname = nickname; }
+    public String getNickname() {
+        return nickname;
+    }
 
-    public String getPhonePrimary() { return phonePrimary; }
-    public void setPhonePrimary(String phonePrimary) { this.phonePrimary = phonePrimary; }
+    public String getPhonePrimary() {
+        return phonePrimary;
+    }
 
-    public String getPhoneSecondary() { return phoneSecondary; }
-    public void setPhoneSecondary(String phoneSecondary) { this.phoneSecondary = phoneSecondary; }
+    public String getPhoneSecondary() {
+        return phoneSecondary;
+    }
 
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
+    public String getEmail() {
+        return email;
+    }
 
-    public String getLinkedinUrl() { return linkedinUrl; }
-    public void setLinkedinUrl(String linkedinUrl) { this.linkedinUrl = linkedinUrl; }
+    public String getLinkedinUrl() {
+        return linkedinUrl;
+    }
 
-    public Date getBirthDate() { return birthDate; }
-    public void setBirthDate(Date birthDate) { this.birthDate = birthDate; }
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
 
-    @Override
-    public String toString() {
-        return contactId + " | " + firstName + " | " + middleName + " | " + lastName +
-                " | " + nickname + " | " + phonePrimary + " | " + phoneSecondary +
-                " | " + email + " | " + linkedinUrl + " | " + birthDate;
+    public String getJobTitle() {
+        return jobTitle;
     }
 }
+
